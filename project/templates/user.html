@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>User</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container my-4">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-primary display-5">{{ current_user.username }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Name:</strong> {{ current_user.name }}</p>
+                        <p><strong>Email: </strong><a href="edit_user_email/{{ current_user.id }}">{{ current_user.email }}</a></p>
+                        <p><strong>Password: </strong><a href="edit_user_pass/{{ current_user.id }}">Change</a></p>
+                        <p><strong>Level:</strong> {{ current_user.level }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container my-4">
+        {% if current_user.level == 'admin' %}
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="text-primary display-5">Users Historic</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Date</th>
+                                    <th>Discription</th>
+                                    <th>User</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for hist in historic %}
+                                <tr>
+                                    <td>{{ hist.id }}</td>
+                                    <td>{{ hist.date }}</td>
+                                    <td>{{ hist.description }}</td>
+                                    <td>{{ hist.username }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        {% endif %}
+    </div>
+
+{% endblock %}

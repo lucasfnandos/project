@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Email Update</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container align-text-center my-4">
+        <div class="row align-items-center my-4">
+            <div class="col align-self-center">
+                <h4 class="text-center text-primary display-6">Update your Email!</h4>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col align-self-center my-3">
+                <h6 class="text-center text-danger">Current Email: {{ current_user.email }}</h6>
+            </div>
+        </div>
+        <div class="row align-items-center" style="max-width: 70%; min-width: 320px; margin-top: 0; margin: auto;">
+            
+                <form method="post" class="form-register">
+                    {{ form.hidden_tag() }}
+                    
+                    {{ form.new_email.label() }}
+                    {{ form.new_email(class="form-control", placeholder="New Email") }}
+                    
+                    {{ form.confirm_email.label() }}
+                    {{ form.confirm_email(class="form-control", placeholder="Confirm Email") }}
+                    <br>
+                    {{ form.submit(class="btn btn-primary") }}
+                </form>
+            
+        </div>
+    </div>
+
+{% endblock %}

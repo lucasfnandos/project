@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    
+{% endblock title %}
+
+{% block body %}
+{% if current_user.level == 'admin' %}
+    <div class="container my-5">
+        
+        <div class="card">
+            <div class="card-header">
+                <h5 class="text-primary display-5">
+                    {% for detail in employee %}
+                    {{ detail.name }}</h5>
+                    {% endfor %}
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-8">
+                                {% for detail in employee %}
+                                <p><strong>Position:</strong> {{ detail.position }}</p>
+                                {% endfor %}
+                                <p><strong>Age:</strong> {{ age }}</p>
+                                {% for detail in employee %}
+                                <p><strong>Born Date:</strong> {{ detail.born_date }}</p>
+                                <p><strong>Hire Date:</strong> {{ detail.hire_date }}</p>
+                                <p><strong>Email:</strong> {{ detail.email }}</p>
+                                <p><strong>Contact:</strong> {{ detail.contact | contact}}</p>
+                                <p><strong>Current employee:</strong> {{ detail.is_actual }}</p>
+                                {% if detail.is_actual == 'no' %}
+                                    <p><strong>Fire Date:</strong> {{ detail.end_date }}</p>
+                                    <button onclick="if(confirm('Confirm to edit Employee Data!')){location.href='edit/{{ detail.id }}';}else{false;}" class="btn btn-primary">Edit</button>
+                                {% else %}
+                                    <button onclick="if(confirm('Confirm to edit Employee Data!')){location.href='edit/{{ detail.id }}';}else{false;}" class="btn btn-primary">Edit</button>
+                                    <button onclick="if(confirm('Confirm to change Employee status!')){location.href='fire/{{ detail.id }}';}else{false;}" class="btn btn-danger">Fire</button>
+                                {% endif %}
+                            </div>
+                            {% if detail.pic %}
+                            <div class="col-4">
+                                <img src="{{ url_for('static', filename='images/' + detail.pic)}}" alt="employee pic" width="230" max-height="350" class="rounded float-end  img-fluid">
+                            </div>
+                            {% else %}
+                            <div class="col-4">
+                                <img src="{{ url_for('static', filename='images/default_img.png')}}" alt="employee pic" width="200" class="rounded float-end img-fluid">
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    {% endif %}
+{% endblock body %}
+    

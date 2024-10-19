@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Set Fire Date
+{% endblock title %}
+    
+
+{% block body %}
+    {% if current_user.level == 'admin' %}
+    <div class="container my-5">
+       
+        <form method="post" class="row g-3">
+            {{ form.hidden_tag() }}
+            <div class="col-auto">
+                <label for="fire_date" class="visually-hidden"></label>
+                <input type="text" readonly class="form-control-plaintext" id="fire_date" value="Employee's Fire Date:">
+            </div>
+            <div class="col-auto">
+                {{ form.fire_date(class="form-control") }}
+            </div>
+            <div class="col-auto">
+                {{form.submit(class="btn btn-primary mb-3") }}
+            </div>
+        </form>
+    </div>
+    {% else %}
+    {% endif %}
+{% endblock body %}
+    

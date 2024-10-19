@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Password Update</title>
+{% endblock %}
+
+{% block body %}
+    <div style="max-width: 40%; min-width: 320px; margin: 0 auto;" class="container align-text-center my-4">
+        <div class="row align-items-center">
+            <div class="col align-self-center my-4">
+                <h4 class="text-center text-primary display-6">Change your password!</h4>
+            </div>
+        </div>
+        <form method="post" class="form-register">
+            {{ form.hidden_tag() }}
+            
+            {{ form.current_pass.label() }}
+            {{ form.current_pass(class="form-control", placeholder="Current Password") }}
+
+            {{ form.new_pass.label() }}
+            {{ form.new_pass(class="form-control", placeholder="New Password") }}
+
+            {{ form.confirm_pwd.label() }}
+            {{ form.confirm_pwd(class="form-control", placeholder="Confirm Password") }}
+            <br>
+            
+            {{ form.submit(class="btn btn-primary") }}
+            
+        </form>
+    </div>
+
+{% endblock %}

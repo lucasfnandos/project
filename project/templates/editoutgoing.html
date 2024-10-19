@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Edit Outgoing</title>
+{% endblock %}
+
+{% block body %}
+    <br>
+    <div class="container">
+        <h3 class="h3 mb-3 font-weight-normal" style="color: red;">Edit Outgoing #{{ row.id }} from {{ row.date }}</h3>
+    </div>
+    {% for data in row %}
+    <div class="container">    
+        <form method="post" class="form-register">
+            {{ form.hidden_tag() }}
+        <div class="mb-3">    
+            {{ form.date.label() }}
+            {{ form.date(class="form-control") }}
+        </div>    
+        <div class="mb-3">
+            {{ form.cost.label() }}
+            {{ form.cost(class="form-control", placeholder="Cost") }}
+        </div>
+        <div class="mb-3">        
+            {{ form.method.label() }}
+            {{ form.method(class="form-control", placeholder="Payment Method") }}
+        </div>
+        <div class="mb-3">        
+            {{ form.receiver.label() }}
+            {{ form.receiver(class="form-control") }}
+        </div>
+        <div class="mb-3">    
+            {{ form.type1.label() }} {{ data.type1 }}
+            {{ form.type1(class="form-control", **{"hx-get": "/get_types", "hx-target": "#type2"}) }}
+        </div>
+        <div class="mb-3">     
+            {{ form.type2.label() }} {{ data.type2 }}
+            {{ form.type2(class="form-control") }}
+        </div>
+        <div class="mb-3">    
+            {{ form.description.label() }}
+            {{ form.description(class="form-control", placeholder="Description") }}
+        </div>
+        <div class="mb-3">    
+            {{ form.status.label() }}
+            {{ form.status(class="form-control") }}
+        </div>    
+            <br>
+            {{ form.submit(class="btn btn-primary") }}
+        </form>
+    </div>
+    {% endfor %}
+{% endblock %}

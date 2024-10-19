@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Employee Edit</title>
+{% endblock %}
+
+{% block body %}
+    {% if current_user.level == 'admin' %}
+    <br>
+    <div class="container">
+        <h3 class="text-primary display-5">Edit Employee: {{ employee.name }}</h3>
+    </div>
+    <div class="container my-5">    
+        <form method="post" class="form-register" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            {{ form.name.label() }}
+            {{ form.name(class="form-control", placeholder="Employee Full Name") }}
+        </div>
+        <div class="mb-3">
+            {{ form.born_date.label() }}
+            {{ form.born_date(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.position.label() }}
+            {{ form.position(class="form-control", placeholder="Employee Position") }}
+        </div>
+        <div class="mb-3">
+            {{ form.hire_date.label() }}
+            {{ form.hire_date(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.email.label() }}
+            {{ form.email(class="form-control", placeholder="Employee email")}}
+        </div>
+        <div class="mb-3">
+            {{ form.contact.label() }}
+            {{ form.contact(class="form-control", placeholder="Employee contact") }}
+        </div>
+        <div class="mb-3">
+            {{ form.is_actual.label() }}
+            {{ form.is_actual(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.pic.label() }}
+            {{ form.pic(class="form-control") }}
+        </div>
+            <br>
+            {{ form.submit(class="btn btn-primary") }}
+        </form>
+    </div>
+    {% else %}
+    {% endif %}
+{% endblock %}

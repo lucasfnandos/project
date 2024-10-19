@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Suppliers</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container my-4">
+    <h4 class="text-primary display-5">Suppliers:</h4>
+    </div>
+    <div class="container my-4">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Company Name</th>
+                    <th>Company Identificator</th>
+                    <th>Sales Person</th>
+                    <th>Contact</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for supplier in suppliers %}
+                <tr>
+                    <td>{{ supplier.id }}</td>
+                    <td>{{ supplier.company_name }}</td>
+                    <td>{{ supplier.company_id | comp_id }}</td>
+                    <td>{{ supplier.sales_person }}</td>
+                    <td>{{ supplier.contact | contact }}</td>
+                    <td>
+                        <button onclick="if(confirm('Confirm to edit supplier!')){location.href='editsupplier/{{ supplier.id }}';}else{false;}" class="btn btn-primary">Edit</button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

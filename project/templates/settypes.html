@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    <title>Set Types</title>
+{% endblock title %}
+    
+
+{% block body %}
+    <div class="container text-center my-5">
+        <div class="row align-items-start">
+            <div class="col">
+                <button class="btn btn-primary" onclick="if(confirm('Register new Type 1?')){location.href='set_type1';}else{false;}">Register Type 1</button>
+                <table class="table my-3">
+                    <thead>
+                        <tr>
+                            <th>Type 1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for type1 in typ1 %}
+                        <tr>
+                            <td>{{ type1.type1 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" onclick="if(confirm('Register new Type 2?')){location.href='set_type2';}else{false;}">Register Type 2</button>
+                <table class="table my-3">
+                    <thead>
+                        <tr>
+                            <th>Type 1</th>
+                            <th>Type 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for type2 in typ2 %}
+                        <tr>
+                            <td>{{ type2.type1 }}</td>
+                            <td>{{ type2.type2 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}
+    

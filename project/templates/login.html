@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Login</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container align-text-center" style="max-width: 40%; min-width: 320px;">
+        <div class="row align-items-center my-4">
+            <div class="col align-self-center">
+                <h4 class=" text-center text-primary display-6">Log Into Your Account!</h4>
+            </div>
+        </div>
+        <div class="row align-items-center my-4">
+            <div class="col align-self-center border border-primary">
+                <form method="post" class="form-register">
+                    {{ form.hidden_tag() }}
+                    
+                    {{ form.username.label() }}
+                    {{ form.username(class="form-control", placeholder="Username") }}
+        
+                    {{ form.password.label() }}
+                    {{ form.password(class="form-control", placeholder="Password") }}
+                    
+                    {{ form.submit(class="form-control btn btn-primary my-4") }}
+                    
+                </form>
+            </div>
+        </div>
+        <!--<div class="row align-items-center">
+            <div class="col align-self-center">
+                <p class="text-center">Don't you have an account already?
+                    <a class="text-primary-emphasis" href="{{ url_for('user_register') }}">Sign Up!</a></p>
+            </div>
+        </div>-->
+    </div>
+    
+
+{% endblock %}

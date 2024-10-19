@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Payments</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container my-4">
+        <h4 class="text-danger display-5">$ Payments:</h4>
+    </div>
+    <div class="container my-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Receiver</th>
+                    <th>Cost</th>
+                    <th>Method</th>
+                    <th>Type 1</th>
+                    <th>Type 2</th>
+                    <th>Description</th>
+                    <th>Edit</th>
+                    <th></th>
+                </tr>
+            </thead>
+            {% for payment in payments %}
+            <tbody>
+                <tr>
+                    <td>{{ payment.id }}</td>
+                    <td>{{ payment.date }}</td>
+                    <td>{{ payment.receiver }}</td>
+                    <td>{{ payment.cost | usd }}</td>
+                    <td>{{ payment.method }}</td>
+                    <td>{{ payment.type1 }}</td>
+                    <td>{{ payment.type2 }}</td>
+                    <td>{{ payment.description }}</td>
+                    <td><button onclick="if(confirm('Confirm to edit? The status is going to change to OPEN!')){
+                        location.href='editpayment/{{ payment.id }}';
+                    }else{false;}" class='btn btn-primary'>Edit</button></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Taxes</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container my-4">
+        <h4 class="text-primary display-5">Taxes Historic</h4>
+    </div>
+    {% if current_user.level == 'admin' %}
+    <div class="container">
+        <a href="{{ url_for('set_taxes') }}" role="button" class="btn btn-primary">Update Taxes</a>
+    </div>
+    {% else %}
+    {% endif %}
+    <div class="container my-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Update</th>
+                    <th>Cash (%)</th>
+                    <th>Debit (%)</th>
+                    <th>Credit (%)</th>
+                    <th>User</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tax in taxes %}
+                    <tr>
+                        <td>{{ tax.id }}</td>
+                        <td>{{ tax.update }}</td>
+                        <td>{{ tax.cash_tax }}</td>
+                        <td>{{ tax.debit_tax }}</td>
+                        <td>{{ tax.credit_tax }}</td>
+                        <td>{{ tax.username }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+    </div>
+    
+{% endblock %}
