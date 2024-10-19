@@ -7,7 +7,7 @@ from project.helper import usd, contact, comp_id
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///project.db'
-app.config['SECRET_KEY'] = 'fbdb5eb6dafa8db120aee73d'
+app.config['SECRET_KEY'] = ''
 
 UPLOAD_FOLDER = 'project/static/images/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
